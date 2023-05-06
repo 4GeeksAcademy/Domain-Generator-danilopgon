@@ -24,15 +24,15 @@ const getDomain = () => {
 };
 
 const getDomainHack = (arrayOfDomains) => {
-  let domainHackedArray = arrayOfDomains.filter((domainName) => {
+  let domainHackedArray = arrayOfDomains.map((domainName) => {
     domainName = domainName.split(".");
     let extensionLength = domainName[1].length;
 
     if (domainName[0].endsWith(domainName[1])) {
       domainName[0] = domainName[0].slice(0, -extensionLength);
-      domainHackedArray.push(`${domainName[0]}.${domainName[1]}`);
+      return `${domainName[0]}.${domainName[1]}`;
     } else {
-      domainHackedArray.push(`${domainName[0]}.${domainName[1]}`);
+      return `${domainName[0]}.${domainName[1]}`;
     }
   });
 
